@@ -1,0 +1,25 @@
+version: '3.2'
+volumes:
+  mysql-volume: null
+services:
+  chroler:
+    image: node:16-alpine
+    volumes:
+      - ./app/:/app/
+    working_dir: /app
+    command: yarn dev
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/chroler/Dockerfile
+    logging:
+      driver: json-file
+      options:
+        max-file: '1'
+        max-size: 1m
+    networks:
+      - default
+      - shared-network
+networks:
+  shared-network:
+    external: true
