@@ -9,8 +9,6 @@ jobs:
   deploy:
     name: Deploy Functions
     runs-on: ubuntu-latest
-    env:
-      REGION: us-central1
     steps:
       # リポジトリをチェックアウト
       - name: Checkout
@@ -45,6 +43,7 @@ jobs:
           cd app
           yarn install
           yarn build
+          cp .env build/.env
           cd build
           yarn install --production
           cd ../
@@ -52,9 +51,9 @@ jobs:
 
       - name: Deploy to Cloud Functions
         run: |
-          gcloud config set functions/region ${REGION}
-          gcloud functions deploy ${{ secrets.FUNCION_NAME }} \
+          gcloud functions deploy ${{ secrets.FUNCTION_NAME }} \
           --timeout 60 \
+          --region=${{ secrets.REGION }} \
           --source app/build.zip \
           --allow-unauthenticated \
           --entry-point server.js \
