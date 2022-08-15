@@ -17,7 +17,7 @@
     slash "^3.0.0"
     term-size "^2.2.1"
 
-"@adonisjs/application@^5.2.4", "@adonisjs/application@^5.2.5":
+"@adonisjs/application@^5.2.5":
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/@adonisjs/application/-/application-5.2.5.tgz#e4a6d33dd5f4ce60fe2f664cf331c8fdcb5714a7"
   integrity sha512-gWhW/dAzMb8019kTPzY+1QIhnXoBjZgRxkMFWz7BQzS8GUJr8BDzrRpGzhWoj8Xpal3EkprN3gv5Upcqvg6uEQ==
@@ -30,16 +30,16 @@
     "@poppinss/utils" "^4.0.4"
     semver "^7.3.7"
 
-"@adonisjs/assembler@^5.7.0":
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-5.7.0.tgz#d1ab24d671df804f93235910fb23cbba9b454b34"
-  integrity sha512-13ombiG4YLzrOnYvY6qIAHRX9Wc6KnAbmxmyVTd3gxLq/knqHLX8apwk9O/hebf7t8lBxwnIVmw61C9dYBBsqg==
+"@adonisjs/assembler@^5.8.1":
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-5.8.1.tgz#24c259665fe82b20852bf951c82186444edfac98"
+  integrity sha512-H/v2iQIBIKjQXulxrSCvS+xFEqHgm0Gbiz5LopynlqJpijVmLHZFZauaIzkDtq0sWRrotwkb62pVQ8vPt+Brpg==
   dependencies:
-    "@adonisjs/application" "^5.2.4"
+    "@adonisjs/application" "^5.2.5"
     "@adonisjs/env" "^3.0.9"
     "@adonisjs/ioc-transformer" "^2.3.4"
     "@adonisjs/require-ts" "^2.0.12"
-    "@adonisjs/sink" "^5.3.2"
+    "@adonisjs/sink" "^5.4.0"
     "@poppinss/chokidar-ts" "^3.3.5"
     "@poppinss/cliui" "^3.0.2"
     "@poppinss/utils" "^4.0.4"
@@ -231,17 +231,17 @@
     "@poppinss/utils" "^4.0.4"
     fs-extra "^10.1.0"
 
-"@adonisjs/sink@^5.3.2":
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/@adonisjs/sink/-/sink-5.3.2.tgz#99d5ab92cb67668e7672ef6a359611843689807b"
-  integrity sha512-DLwXt6FrNxS2DlRwy/xK6BKjxgE34+WSluWhi7k2AYA0YUtLNzZCNecut03/G1PmeWOTmwiSXaUaRY6Q+9w3IQ==
+"@adonisjs/sink@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@adonisjs/sink/-/sink-5.4.0.tgz#11eed413cd1302de68d573a55522ec68e6a7b44f"
+  integrity sha512-67udQ21w4JNo78Slrwl19DZ8eWDWPSUhVo94K6IWvpC6nOKKOs5uQe2LV19EzJvdOTrn2u0CWDD7m8hE/pe2Lg==
   dependencies:
     "@poppinss/cliui" "^3.0.2"
     "@poppinss/prompts" "^2.0.2"
     "@poppinss/utils" "^4.0.4"
     cp-file "^9.1.0"
     fs-extra "^10.1.0"
-    marked "^4.0.16"
+    marked "^4.0.18"
     marked-terminal "^5.1.1"
     mrm-core "^7.0.0"
     mustache "^4.2.0"
@@ -3228,10 +3228,10 @@ marked-terminal@^5.1.1:
     node-emoji "^1.11.0"
     supports-hyperlinks "^2.2.0"
 
-marked@^4.0.16:
-  version "4.0.16"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.16.tgz#9ec18fc1a723032eb28666100344d9428cf7a264"
-  integrity sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==
+marked@^4.0.18:
+  version "4.0.18"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.18.tgz#cd0ac54b2e5610cfb90e8fd46ccaa8292c9ed569"
+  integrity sha512-wbLDJ7Zh0sqA0Vdg6aqlbT+yPxqLblpAZh1mK2+AO2twQkPywvvqQNfEPVwSSRjZ7dZcdeVBIAgiO7MMp3Dszw==
 
 md5@~2.2.0:
   version "2.2.1"

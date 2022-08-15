@@ -32,10 +32,18 @@ jobs:
         with:
           node-version: 16.x
 
+      # 環境変数の設定
+      - name: Set Environments
+        run: |
+          cp app/.env.example app/.env
+          echo 'NODE_ENV=production' >> app/.env
+          echo 'PORT=80' >> app/.env
+
       # アプリのビルド
       - name: Build Chroler
         run: |
           cd app
+          yarn install
           yarn build
           cd build
           yarn install --production
