@@ -55,9 +55,9 @@ jobs:
           --region=${{ secrets.REGION }} \
           --source app/build \
           --allow-unauthenticated \
-          --entry-point server.js \
+          --entry-point=server.js \
           --trigger-http \
           --memory 256MB \
           --security-level secure-optional \
-          --runtime nodejs14
+          --runtime nodejs16
 
