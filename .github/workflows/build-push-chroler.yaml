@@ -52,9 +52,9 @@ jobs:
 
       - name: Deploy to Cloud Functions
         run: |
+          gcloud config set functions/region ${REGION}
           gcloud functions deploy ${{ secrets.FUNCION_NAME }} \
           --timeout 60 \
-          --region=us-central1 \
           --source app/build.zip \
           --allow-unauthenticated \
           --entry-point server.js \
