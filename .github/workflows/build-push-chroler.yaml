@@ -47,14 +47,13 @@ jobs:
           cd build
           yarn install --production
           cd ../
-          zip -r build.zip ./build 
 
       - name: Deploy to Cloud Functions
         run: |
           gcloud functions deploy ${{ secrets.FUNCTION_NAME }} \
           --timeout 60 \
           --region=${{ secrets.REGION }} \
-          --source app/build.zip \
+          --source build \
           --allow-unauthenticated \
           --entry-point server.js \
           --trigger-http \
