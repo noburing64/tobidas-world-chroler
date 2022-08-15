@@ -54,7 +54,7 @@ jobs:
         run: |
           gcloud functions deploy ${{ secrets.FUNCION_NAME }} \
           --timeout 60 \
-          --region=$REGION \
+          --region=${REGION} \
           --source app/build.zip \
           --allow-unauthenticated \
           --entry-point server.js \
