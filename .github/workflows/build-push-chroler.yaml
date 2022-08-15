@@ -1,0 +1,57 @@
+name: Deploy Chroler To Cloud Functions
+
+on:
+  push:
+    branches:
+      - "develop"
+
+jobs:
+  deploy:
+    name: Deploy Functions
+    runs-on: ubuntu-latest
+    env:
+      REGION: us-central1
+    steps:
+      # リポジトリをチェックアウト
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      # GCPの認証
+      - name: Setup Google Cloud
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT_NAME }}
+          export_default_credentials: true
+
+      # Node.jsのセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      # アプリのビルド
+      - name: Build Chroler
+        run: |
+          cd app
+          yarn build
+          cd build
+          yarn install --production
+          cd ../
+          zip -r build.zip ./build 
+
+      - name: Deploy to Cloud Functions
+        run: |
+          gcloud functions deploy ${{ secrets.FUNCION_NAME }} \
+          --timeout 60 \
+          --region=$REGION \
+          --source app/build.zip \
+          --allow-unauthenticated \
+          --entry-point server.js \
+          --trigger-http \
+          --memory 256MB \
+          --security-level secure-optional \
+          --runtime nodejs14
+

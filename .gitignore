@@ -1,3 +1,4 @@
 app/node_modules
 app/resources
 app/.env
+app/build

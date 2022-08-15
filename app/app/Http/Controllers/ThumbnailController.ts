@@ -44,6 +44,7 @@ export default class ThumbnailController {
         await page.waitForTimeout(1000 * 10);
 
         const rect = await page.evaluate(() => {
+            // @ts-ignore
             const rect = document.querySelector('#myCanvas').getBoundingClientRect();
             return {
                 x: rect.left,
