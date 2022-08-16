@@ -57,7 +57,6 @@ jobs:
           --allow-unauthenticated \
           --trigger-http \
           --memory 256MB \
-          --member=allUsers \
           --security-level secure-optional \
           --runtime nodejs16
 
