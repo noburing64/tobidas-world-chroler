@@ -2,8 +2,15 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Puppeteer from 'puppeteer';
 import crypto from 'crypto';
 
-export default class ThumbnailController {
-    public async index(ctx: HttpContextContract) {
+export default class HealthController {
+    public index(ctx: HttpContextContract) {
+        const d = new Date()
+        const timestamp = `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+        ctx.logger.info(`${timestamp} health ${JSON.stringify(ctx.request)}`)
+        return ctx.request
+    }
+
+    public async callback(ctx: HttpContextContract) {
         const queryParams = ctx.request.qs();
         if (!queryParams.url) {
             return ctx.response.status(401).send({ msg: "URLが指定されていません" })
@@ -41,18 +48,6 @@ export default class ThumbnailController {
             height: 960,
         });
         await page.goto(queryParams.url);
-        await page.waitForTimeout(1000 * 3);
-
-        const rect = await page.evaluate(() => {
-            // @ts-ignore
-            const rect = document.querySelector('#myCanvas').getBoundingClientRect();
-            return {
-                x: rect.left,
-                y: rect.top,
-                width: rect.width,
-                height: rect.height
-            };
-        });
 
         const hmac = crypto.createHmac('sha256', 'aaa');
         const t = (new Date()).getTime();
@@ -61,8 +56,7 @@ export default class ThumbnailController {
         const tmpFilePath = "/tmp/" + fileName + "_thumbnail.png";
         await page.screenshot({
             path: tmpFilePath,
-            clip: rect,
-            // fullPage: true
+            fullPage: true
         });
 
         await browser.close();
