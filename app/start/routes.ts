@@ -22,3 +22,5 @@ import Route from '@ioc:Adonis/Core/Route'
 
 //Route.get('/api/v1/thumbnails', 'ThumbnailController.index');
 Route.resource('api/v1/thumbnails', 'ThumbnailController').only(['index']);
+Route.get('/api/v1/health', 'HealthController.index');
+Route.get('/api/v1/health/callback', 'HealthController.callback');
